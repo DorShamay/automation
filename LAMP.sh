@@ -13,7 +13,7 @@ if [ $(id -u) != "0" ]; then
 	fi
 }
 
-apache()
+Apaches()
 {
 # Installing apache2 (WebServer)
 apt-get install -y apache2
@@ -21,7 +21,7 @@ apt-get install -y apache2
 
 }
 
-ngnix()
+Ngnixs()
 {
 #Installing Ngnix (Webserver)
 echo "Before Installing Ngnix on Deb/Ubuntu You'll need some repos of the package, Let me do it for you"
@@ -41,12 +41,12 @@ select Webserv in  "Apache2" "Ngnix" "Quit"
 	do
 		case $Webserv in
 			"Apache2" | "apache2")
-		apache
+		Apaches
 		  printf "\n"
 		  printf "\n"
 			;;
 			"Ngnix" | "ngnix")
-		ngnix
+		Ngnixs
 		  printf "\n"
 		  printf "\n"
 			;;
@@ -92,18 +92,18 @@ Mariadb()
 {
 #Installing MariaDB
 	apt-get install -y mariadb-server
-			if [[ $? = 0 ]]; then
+	if [[ $? = 0 ]]; then
 				echo "Install successfully"
-			else
-				echo "Install unseccessfully"
-			fi
+	else
+				echo "Install unsuccessfully"
+	fi
 				read -p "Would you like to install MariaDB client aswell? Yes/No " ans
-						if [[ $ans =~ "yes" ]]; then
-							apt-get install -y MariaDB-client
-						else
-							echo "No worries just keep on going"
-						fi
-				sleep 1
+	if [[ $ans =~ "yes" ]]; then
+	apt-get install -y MariaDB-client
+	else
+				echo "No worries just keep on going"
+	fi
+sleep 1
 }
 
 Postgresql()
