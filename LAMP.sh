@@ -91,17 +91,19 @@ echo "Which SQL Server would you like to install?"
 Mariadb()
 {
 #Installing MariaDB
-apt-get install -y mariadb-server
-	if [[ $? = 0 ]]; then
-		return;
-
-read -p "Would you like to install MariaDB client aswell? Yes/No " ans
-if [[ $ans =~ "yes" ]]; then
-	apt-get install -y MariaDB-client
-else
-		echo "No worries just keep on going"
-fi
-
+	apt-get install -y mariadb-server
+			if [[ $? = 0 ]]; then
+				echo "Install successfully"
+			else
+				echo "Install unseccessfully"
+			fi
+				read -p "Would you like to install MariaDB client aswell? Yes/No " ans
+						if [[ $ans =~ "yes" ]]; then
+							apt-get install -y MariaDB-client
+						else
+							echo "No worries just keep on going"
+						fi
+				sleep 1
 }
 
 Postgresql()
