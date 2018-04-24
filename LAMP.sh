@@ -92,16 +92,8 @@ Mariadb()
 {
 #Installing MariaDB
 apt-get install -y mariadb-server
-if [[ $? = 1 ]]; then
-	read -p "Something went wrong Want to try again? " try
-	if [[ $try =~ yes ]];then
-		apt-get install -y mariadb-server
-		if [[ $? = 1 ]];then
-			echo "Something went wrong again , Please exit the script and try again manually. "
-		exit 1
-		fi
-	fi
-fi
+	if [[ $? = 0 ]]; then
+		return;
 
 read -p "Would you like to install MariaDB client aswell? Yes/No " ans
 if [[ $ans =~ "yes" ]]; then
