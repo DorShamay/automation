@@ -17,8 +17,11 @@ Apaches()
 {
 # Installing apache2 (WebServer)
 apt-get install -y apache2
-
-
+	if [[ $? = 0 ]]; then
+		echo "Install successfully"
+	else
+		echo "Install unseccessfully"
+	fi
 }
 
 Ngnixs()
@@ -28,9 +31,14 @@ echo "Before Installing Ngnix on Deb/Ubuntu You'll need some repos of the packag
 echo deb http://nginx.org/packages/ubuntu/ >> /etc/apt/sources.list
 echo deb-src http://nginx.org/packages/ubuntu/ >> /etc/apt/sources.list
 echo "As we all know we need to update the repos after adding new ones"
-apt-get update
-apt-get install -y ngnix
-sleep 2
+	apt-get update
+	apt-get install -y ngnix
+	if [[ $? = 0 ]]; then
+		echo "Install successfully"
+	else
+		echo "Install unseccessfully"
+	fi
+	sleep 2
 
 }
 
@@ -69,12 +77,12 @@ echo "Which SQL Server would you like to install?"
 		do
 			case $Sql in
 				"MariaDB" | "mariadb")
-				Mariadb
+				Mariadbs
 					printf "\n"
 					printf "\n"
 					;;
 					"PostgreSQL" | "postgresql")
-					Postgresql
+					Postgresqls
 					printf "\n"
 					printf "\n"
 					;;
