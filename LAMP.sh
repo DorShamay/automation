@@ -25,11 +25,11 @@ ngnix()
 {
 #Installing Ngnix (Webserver)
 echo "Before Installing Ngnix on Deb/Ubuntu You'll need some repos of the package, Let me do it for you"
-echo /etc/apt/sources.list >> deb http://nginx.org/packages/ubuntu/
-echo /etc/apt/sources.list >> deb-src http://nginx.org/packages/ubuntu/
+echo deb http://nginx.org/packages/ubuntu/ >> /etc/apt/sources.list
+echo deb-src http://nginx.org/packages/ubuntu/ >> /etc/apt/sources.list
 echo "As we all know we need to update the repos after adding new ones"
 apt-get update
-apt-get install -y ngnix 
+apt-get install -y ngnix
 
 }
 
