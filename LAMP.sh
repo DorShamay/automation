@@ -106,14 +106,16 @@ Mariadbs()
   sleep 1
 }
 
-Postgresql()
+Postgresqls()
 {
 #Installing Postgresql
-apt-get install -y postgresql
-sleep 1
-
-
-
+	apt-get install -y postgresql
+	if [[ $? = 0 ]]; then
+		echo "Install successfully"
+	else
+		echo "Install unseccessfully"
+	fi
+	sleep 1
 }
 
 
