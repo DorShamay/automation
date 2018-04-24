@@ -16,59 +16,61 @@ if [ $(id -u) != "0" ]; then
 Apaches()
 {
 # Installing apache2 (WebServer)
-apt-get install -y apache2
+	apt-get install -y apache2
 	if [[ $? = 0 ]]; then
 		echo "Install successfully"
 	else
-		echo "Install unseccessfully"
+		echo "Install unsuccessfully"
 	fi
 }
 
 Ngnixs()
 {
 #Installing Ngnix (Webserver)
-echo "Before Installing Ngnix on Deb/Ubuntu You'll need some repos of the package, Let me do it for you"
-echo deb http://nginx.org/packages/ubuntu/ >> /etc/apt/sources.list
-echo deb-src http://nginx.org/packages/ubuntu/ >> /etc/apt/sources.list
-echo "As we all know we need to update the repos after adding new ones"
-	apt-get update
-	apt-get install -y ngnix
-	if [[ $? = 0 ]]; then
-		echo "Install successfully"
-	else
-		echo "Install unseccessfully"
-	fi
-	sleep 2
+	echo "Before Installing Ngnix on Deb/Ubuntu You'll need some repos of the package, Let me do it for you"
+	echo deb http://nginx.org/packages/ubuntu/ >> /etc/apt/sources.list
+	echo deb-src http://nginx.org/packages/ubuntu/ >> /etc/apt/sources.list
+	echo "As we all know we need to update the repos after adding new ones"
+		apt-get update
+		apt-get install -y ngnix
+		if [[ $? = 0 ]]; then
+			echo "Install successfully"
+		else
+			echo "Install unsuccessfully"
+		fi
+		sleep 2
 
 }
 
+#Menu of the installation of Webservers
 webmenudeb()
 {
 echo "Which webserver you want to install?"
 select Webserv in  "Apache2" "Ngnix" "Quit"
 	do
 		case $Webserv in
-			"Apache2" | "apache2")
-		Apaches
-		  printf "\n"
-		  printf "\n"
-			;;
-			"Ngnix" | "ngnix")
-		Ngnixs
-		  printf "\n"
-		  printf "\n"
-			;;
-			"Quit" | "q")
-		exit 0
-			;;
-				*)
-					echo "Please enter Valid Selection"
-			;;
+		"Apache2" | "apache2")
+			Apaches
+	  		printf "\n"
+	  		printf "\n"
+					;;
+		"Ngnix" | "ngnix")
+			Ngnixs
+	  		printf "\n"
+	  		printf "\n"
+					;;
+		"Quit" | "q")
+				exit 0
+					;;
+			*)
+				echo "Please enter Valid Selection"
+					;;
 		esac
 	done
 
 {
 
+#SQL Server
 sequellmenu()
 {
 
@@ -76,24 +78,24 @@ echo "Which SQL Server would you like to install?"
 	select Sql in "MariaDB" "PostgreSQL" "Quit"
 		do
 			case $Sql in
-				"MariaDB" | "mariadb")
-				Mariadbs
-					printf "\n"
-					printf "\n"
-					;;
-					"PostgreSQL" | "postgresql")
-					Postgresqls
-					printf "\n"
-					printf "\n"
-					;;
-					"Quit" | "q")
-					exit 0
-					;;
-						*)
-								echo "Please enter Valid selection"
-					;;
-				esac
-			done
+			"MariaDB" | "mariadb")
+					Mariadbs
+						printf "\n"
+						printf "\n"
+						;;
+				"PostgreSQL" | "postgresql")
+						Postgresqls
+						printf "\n"
+						printf "\n"
+						;;
+				"Quit" | "q")
+						exit 0
+						;;
+					*)
+							echo "Please enter Valid selection"
+				;;
+			esac
+		done
 }
 
 Mariadbs()
