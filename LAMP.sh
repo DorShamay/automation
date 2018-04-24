@@ -30,15 +30,16 @@ echo deb-src http://nginx.org/packages/ubuntu/ >> /etc/apt/sources.list
 echo "As we all know we need to update the repos after adding new ones"
 apt-get update
 apt-get install -y ngnix
+sleep 2
 
 }
 
-webmenu()
+webmenudeb()
 {
 echo "Which webserver you want to install?"
-select webserv in  "Apache2" "Ngnix" "Quit"
+select Webserv in  "Apache2" "Ngnix" "Quit"
 	do
-		case $webserv in
+		case $Webserv in
 			"Apache2" | "apache2")
 		apache
 		  printf "\n"
@@ -60,5 +61,78 @@ select webserv in  "Apache2" "Ngnix" "Quit"
 
 {
 
-checkroot
-webmenu
+sequellmenu()
+{
+
+echo "Which SQL Server would you like to install?"
+	select Sql in "MariaDB" "PostgreSQL" "Quit"
+		do
+			case $Sql in
+				"MariaDB" | "mariadb")
+				Mariadb
+					printf "\n"
+					printf "\n"
+					;;
+					"PostgreSQL" | "postgresql")
+					Postgresql
+					printf "\n"
+					printf "\n"
+					;;
+					"Quit" | "q")
+					exit 0
+					;;
+						*)
+								echo "Please enter Valid selection"
+					;;
+				esac
+			done
+}
+
+Mariadb()
+{
+#Installing MariaDB
+apt-get install -y mariadb-server
+if [[ $? = 1 ]]; then
+	read -p "Something went wrong Want to try again? " try
+	if [[ $try =~ yes ]];then
+		apt-get install -y mariadb-server
+		if [[ $? = 1 ]];then
+			echo "Something went wrong again , Please exit the script and try again manually. "
+		exit 1
+		fi
+	fi
+fi
+
+read -p "Would you like to install MariaDB client aswell? Yes/No " ans
+if [[ $ans =~ "yes" ]]; then
+	apt-get install -y MariaDB-client
+else
+		echo "No worries just keep on going"
+fi
+
+}
+
+Postgresql()
+{
+#Installing Postgresql
+apt-get install -y postgresql
+sleep 1
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+webmenudeb
+sequellmenu

@@ -1,9 +1,10 @@
 #!/bin/bash
 #dorshamay
-#0.0.1
+#0.0.2
 #Install LAMP Server on few distros
 
 
+source LAMP.sh
 mainmenu()
 {
 
@@ -21,7 +22,7 @@ select func in "Centos-RedHat" "Debian/Ubuntu" "ArchLinux" "Quit"
 		debian/ubuntu
 		  printf "\n"
 		  printf "\n"
-		mainmenu
+		webmenudeb
 			;;
 			"ArchLinux" | "archlinux")
 		archlinux
@@ -38,4 +39,6 @@ select func in "Centos-RedHat" "Debian/Ubuntu" "ArchLinux" "Quit"
 		esac
 	done
 }
+
+checkroot
 mainmenu
