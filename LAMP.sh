@@ -5,10 +5,14 @@
 
 
 # Check if user is root
+checkroot()
+{
 if [ $(id -u) != "0" ]; then
 		echo "You are not root , Exiting"
 		exit 1;
 	fi
+}
+checkroot
 
 apache()
 {
