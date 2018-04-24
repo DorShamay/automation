@@ -12,7 +12,6 @@ if [ $(id -u) != "0" ]; then
 		exit 1;
 	fi
 }
-checkroot
 
 apache()
 {
@@ -34,6 +33,8 @@ apt-get install -y ngnix
 
 }
 
+webmenu()
+{
 echo "Which webserver you want to install?"
 select webserv in  "Apache2" "Ngnix" "Quit"
 	do
@@ -57,3 +58,7 @@ select webserv in  "Apache2" "Ngnix" "Quit"
 		esac
 	done
 
+{
+
+checkroot
+webmenu
