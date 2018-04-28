@@ -1,7 +1,7 @@
 #!/bin/bash
 #Creator : DorShamay
 #Porpuse : Installing LAMP server
-#Version : 0.0.1
+#Version : 0.1.1
 
 
 # Check if user is root
@@ -13,6 +13,49 @@ if [ $(id -u) != "0" ]; then
 	fi
 }
 
+
+mainmenu()
+{
+
+echo "Which distro you running?"
+select func in "Centos-RedHat" "Debian/Ubuntu" "ArchLinux" "Quit"
+	do
+		case $func in
+			"Centos-RedHat")
+		Webmenured
+		  printf "\n"
+		  printf "\n"
+		mainmenu
+			;;
+			"Debian/Ubuntu")
+		Welcomedeb
+		Webmenudeb
+		Sequellmenudeb
+		PhpPearldeb
+			;;
+			"ArchLinux")
+		archlinux
+		  printf "\n"
+		  printf "\n"
+		mainmenu
+			;;
+			"Quit" | "q")
+		exit 0
+			;;
+				*)
+					echo "Please enter a Valid selection"
+			;;
+		esac
+	done
+}
+
+welcomedeb()
+{
+	#Warming welcome to the LAMP Server installation of Debian
+echo "------------------------------------------"
+echo "Welcome to Debian LAMP Server Installation"
+echo "------------------------------------------"
+}
 Apaches()
 {
 # Installing apache2 (WebServer)
@@ -22,6 +65,18 @@ Apaches()
 	else
 		echo "Install unsuccessfully"
 	fi
+echo "Would you like to add a rule for your firewall?"
+select fire in "Yes" "No"
+	case $fire in
+		Yes)
+	firewall-cmd --add-service=http --permanent
+	firewall-cmd --reload
+		;;
+		No)
+	echo "You can always put the rule , Keep on going ... "
+		;;
+		*)
+		 echo "Please enter a Valid Selection"
 }
 
 Ngnixs()
@@ -39,27 +94,37 @@ Ngnixs()
 			echo "Install unsuccessfully"
 		fi
 		sleep 2
-
+		echo "Would you like to add a rule for your firewall?"
+		select fire in "Yes" "No"
+			case $fire in
+				Yes)
+			firewall-cmd --add-service=http --permanent
+			firewall-cmd --reload
+				;;
+				No)
+			echo "You can always put the rule , Keep on going ... "
+				;;
+				*)
+				 echo "Please enter a Valid Selection"}
 }
-
 #Menu of the installation of Webservers
-webmenudeb()
+Webmenudeb()
 {
 echo "Which webserver you want to install?"
 select Webserv in  "Apache2" "Ngnix" "Quit"
 	do
 		case $Webserv in
-		"Apache2" | "apache2")
+		"Apache2")
 			Apaches
 	  		printf "\n"
 	  		printf "\n"
 					;;
-		"Ngnix" | "ngnix")
+		"Ngnix")
 			Ngnixs
 	  		printf "\n"
 	  		printf "\n"
 					;;
-		"Quit" | "q")
+		"Quit")
 				exit 0
 					;;
 			*)
@@ -71,24 +136,24 @@ select Webserv in  "Apache2" "Ngnix" "Quit"
 {
 
 #SQL Server
-sequellmenu()
+Sequellmenudeb()
 {
 
 echo "Which SQL Server would you like to install?"
 	select Sql in "MariaDB" "PostgreSQL" "Quit"
 		do
 			case $Sql in
-			"MariaDB" | "mariadb")
+			"MariaDB")
 					Mariadbs
 						printf "\n"
 						printf "\n"
 						;;
-				"PostgreSQL" | "postgresql")
+				"PostgreSQL")
 						Postgresqls
 						printf "\n"
 						printf "\n"
 						;;
-				"Quit" | "q")
+				"Quit")
 						exit 0
 						;;
 					*)
@@ -107,13 +172,24 @@ Mariadbs()
   else
       echo "Install unseccessfully"
   fi
-  read -p "Would you like to install MariaDB client aswell? Yes/No " ans
-  if [[ $ans =~ "yes" ]]; then
-  	apt-get install -y MariaDB-client
-  else
-      echo "No worries just keep on going"
-  fi
-  sleep 1
+	echo "Would you like to install MariaDB client aswell? Yes/No "
+	select inst in "Yes" "No" "Quit"
+	 do
+	  case $inst
+			"Yes")
+	     apt-get install mariadb-client
+	    ;;
+	    "No")
+	     echo "No worries you can always download it"
+	    ;;
+	    "Quit")
+	     break
+	    ;;
+	    *)
+	     echo "Please enter a valid selection"
+	    ;;
+	 esac
+	done
 }
 
 Postgresqls()
@@ -127,18 +203,128 @@ Postgresqls()
 	fi
 	sleep 1
 }
+PhpPearldeb()
+{
+	echo "Which PHP Service would you like to install?"
+		select script in "Php" "Pearl" "Quit"
+			do
+				case $script in
+				"Php")
+					Phpdeb
+							;;
+				"Pearldeb")
+					Perldeb
+							;;
+					"Quit")
+							break
+							;;
+						*)
+								echo "Please enter Valid selection"
+					;;
+				esac
+			done
+
+}
+
+Phpdeb()
+{
+ echo "Welcome to PHP Installer for debian"
+ apt-get install -y php
+	if [[ $? = 0 ]]; then
+		echo "Installation successfully"
+	else
+		echo "Installation unsuccessfully"
+	fi
+	sleep 1
+}
+
+Perldeb()
+{
+echo "Welcome to Perl Installer for Pearl"
+apt-get install -y perl perl-doc
+  if [[ $? = 0 ]]; then
+		echo "Installation successfully"
+	else
+		echo "Installation unsuccessfully"
+	fi
+	sleep 1
+}
+
+Welcomered()
+{
+echo "------------------------------------------"
+echo "Welcome to Centos LAMP Server Installation"
+echo "------------------------------------------"
+}
+Webmenured()
+{
+ echo "Welcome to WebServer Installation for Centos"
+ select Webserv in  "Apache2" "Ngnix" "Quit"
+ 	do
+ 		case $Webserv in
+ 		"Apache2")
+ 			Apahchered
+ 					;;
+ 		"Ngnix")
+ 			Ngnixred
+ 					;;
+ 		"Quit")
+ 				break
+ 					;;
+ 			*)
+ 				echo "Please enter Valid Selection"
+ 					;;
+ 		esac
+ 	done
+}
+
+Apahchered()
+{
+	yum -y install httpd
+	 if [[ $? = 0 ]]; then
+		 echo "Installation successfully"
+	 else
+		 echo "Installation unsuccessfully"
+	fi
+	sleep 1
+	echo "Would you like to add a rule for your firewall?"
+	select fire in "Yes" "No"
+		case $fire in
+			Yes)
+		firewall-cmd --add-service=http --permanent
+		firewall-cmd --reload
+			;;
+			No)
+		echo "You can always put the rule , Keep on going ... "
+			;;
+			*)
+			 echo "Please enter a Valid Selection"
+}
+
+Ngnixred()
+{
+yum --enablerepo=epel -y install ngnix
+ if [[ $? = 0 ]]; then
+	 echo "Installationb successfully"
+ else
+	 echo "Installation unsuccessfully"
+ fi
+ sleep 1
+ echo "Would you like to add a rule for your firewall?"
+ select fire in "Yes" "No"
+ 	case $fire in
+ 		Yes)
+ 	firewall-cmd --add-service=http --permanent
+ 	firewall-cmd --reload
+ 		;;
+ 		No)
+ 	echo "You can always put the rule , Keep on going ... "
+ 		;;
+ 		*)
+ 		 echo "Please enter a Valid Selection"
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-webmenudeb
-sequellmenu
+checkroot
+firewalls
+mainmenu
