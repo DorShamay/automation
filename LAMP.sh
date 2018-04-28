@@ -326,5 +326,4 @@ yum --enablerepo=epel -y install ngnix
 
 
 checkroot
-firewalls
 mainmenu
