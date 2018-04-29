@@ -72,11 +72,11 @@ select fire in "Yes" "No"
 		Yes)
 	firewall-cmd --add-service=http --permanent
 	firewall-cmd --reload
-	:
+	Sequellmenudeb
 		;;
 		No)
 	echo "You can always put the rule , Keep on going ... "
-	:
+	Sequellmenudeb
 		;;
 		*)
 		 echo "Please enter a Valid Selection"
