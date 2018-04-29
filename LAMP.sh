@@ -1,7 +1,7 @@
 #!/bin/bash
 #Creator : DorShamay
 #Porpuse : Installing LAMP server
-#Version : 1.3.2
+#Version : 1.3.4
 
 
 # Check if user is root
@@ -295,6 +295,7 @@ Apahchered()
 	sleep 1
 	echo "Would you like to add a rule for your firewall?"
 	select fire in "Yes" "No"
+	do
 		case $fire in
 			Yes)
 		firewall-cmd --add-service=http --permanent
@@ -305,6 +306,8 @@ Apahchered()
 			;;
 			*)
 			 echo "Please enter a Valid Selection"
+		esac
+	done
 }
 
 Ngnixred()
@@ -318,7 +321,8 @@ yum --enablerepo=epel -y install ngnix
  sleep 1
  echo "Would you like to add a rule for your firewall?"
  select fire in "Yes" "No"
- 	case $fire in
+	do
+	case $fire in
  		Yes)
  	firewall-cmd --add-service=http --permanent
  	firewall-cmd --reload
@@ -328,12 +332,15 @@ yum --enablerepo=epel -y install ngnix
  		;;
  		*)
  		 echo "Please enter a Valid Selection"
+	 esac
+	done
 }
 
 Sequellmenured()
 {
 echo "Welcome to the SQL Menu for Centos"
 select $sqlr in "MariaDB" "PostgresSQL" "Quit"
+	do
 	case $sqlr in
 		MariaDB)
 		Mariadbred
@@ -346,6 +353,8 @@ select $sqlr in "MariaDB" "PostgresSQL" "Quit"
 		;;
 		*)
 			echo "Please enter a valid selection"
+		esac
+	done
 }
 
 Mariadbred()
@@ -379,6 +388,7 @@ PhpPerlred()
 {
 echo "Welcome to the Installation of Perl/Php for Centos"
 	select $menup in "Perl" "Php" "Quit"
+	do
 		case $menup in
 			Perl)
 			Perlred
@@ -391,6 +401,8 @@ echo "Welcome to the Installation of Perl/Php for Centos"
 			;;
 			*)
 				echo "Please enter a valid selection"
+			esac
+		done
 }
 
 Perlred()
