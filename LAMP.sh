@@ -1,7 +1,7 @@
 #!/bin/bash
 #Creator : DorShamay
 #Porpuse : Installing LAMP server
-#Version : 1.2.1
+#Version : 1.3.0
 
 
 # Check if user is root
@@ -22,10 +22,10 @@ select func in "Centos-RedHat" "Debian/Ubuntu" "ArchLinux" "Quit"
 	do
 		case $func in
 			"Centos-RedHat")
+		Welcomered
 		Webmenured
-		  printf "\n"
-		  printf "\n"
-		mainmenu
+		Sequellmenured
+		PhpPerlred
 			;;
 			"Debian/Ubuntu")
 		Welcomedeb
@@ -324,6 +324,94 @@ yum --enablerepo=epel -y install ngnix
  		 echo "Please enter a Valid Selection"
 }
 
+Sequellmenured()
+{
+echo "Welcome to the SQL Menu for Centos"
+select $sqlr in "MariaDB" "PostgresSQL" "Quit"
+	case $sqlr in
+		MariaDB)
+		Mariadbred
+		;;
+		PostgresSQL)
+		Postgressqlred
+		;;
+		Quit)
+		break
+		;;
+		*)
+			echo "Please enter a valid selection"
+}
+
+Mariadbred()
+{
+echo "Installing MariaDB 10.2 from SCLo repo"
+yum --enablerepo=centos-sclo-rh -y install rh-mariadb102-mariadb-Server
+  if [[ $? = 0 ]]; then
+	  echo "Installation has been successfully"
+  else
+		echo "Installation has been unsuccessfully"
+	fi
+ echo "Your MariaDB Version is .. "
+ mysql -V
+}
+
+Postgressqlred()
+{
+echo "Installing PostgresSQL for Centos from SCLo repo"
+yum --enablerepo=centos-sclo-rh -y install rh-postgresql96-postgresql-server
+ if [[ $? = 0 ]]; then
+	 echo "Installation has been successfully"
+ else
+	 echo "Installation has been unsuccessfully"
+ fi
+
+ echo "Your PostgreSQL Version is ... "
+ mysql -V
+}
+
+PhpPerlred()
+{
+echo "Welcome to the Installation of Perl/Php for Centos"
+	select $menup in "Perl" "Php" "Quit"
+		case $menup in
+			Perl)
+			Perlred
+			;;
+			Php)
+			Phpred
+			;;
+			Quit)
+			break
+			;;
+			*)
+				echo "Please enter a valid selection"
+}
+
+Perlred()
+{
+ echo "Installing Perl for Centos"
+ 	yum -y install perl
+ if [[ $? = 0 ]]; then
+	 echo "Installation has been successfully"
+ else
+	 echo "Installation unsuccessfully"
+ fi
+ sleep 1
+}
+
+Phpred()
+{
+echo "Installing PHP for Centos"
+yum --enablerepo=remi-safe -y install php70 php70-php-pear php70-php-mbstring
+	if [[ $? = 0 ]]; then
+		echo "Installation has been successfully"
+	else
+		echo "Installation has been unsuccessfully"
+	fi
+	sleep 1
+	echo "Your PHP version is ... "
+	php70 -v
+}
 
 checkroot
 mainmenu
