@@ -1,7 +1,7 @@
 #!/bin/bash
 #Creator : DorShamay
 #Porpuse : Installing LAMP server
-#Version : 1.3.6
+#Version : 1.3.7
 
 
 # Check if user is root
@@ -37,7 +37,7 @@ select func in "Centos-RedHat" "Debian/Ubuntu" "ArchLinux" "Quit"
 		archlinux
 		  printf "\n"
 		  printf "\n"
-		mainmenu
+		Mainmenu
 			;;
 			"Quit" | "q")
 		exit 0
