@@ -431,5 +431,5 @@ yum --enablerepo=remi-safe -y install php70 php70-php-pear php70-php-mbstring
 	php70 -v
 }
 
-checkroot
-mainmenu
+checkroot()
+mainmenu()
