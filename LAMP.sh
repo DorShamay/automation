@@ -1,7 +1,7 @@
 #!/bin/bash
 #Creator : DorShamay
 #Porpuse : Installing LAMP server
-#Version : 1.3.0
+#Version : 1.3.2
 
 
 # Check if user is root
@@ -67,6 +67,7 @@ Apaches()
 	fi
 echo "Would you like to add a rule for your firewall?"
 select fire in "Yes" "No"
+	do
 	case $fire in
 		Yes)
 	firewall-cmd --add-service=http --permanent
@@ -77,6 +78,8 @@ select fire in "Yes" "No"
 		;;
 		*)
 		 echo "Please enter a Valid Selection"
+	 esac
+ done
 }
 
 Ngnixs()
@@ -94,8 +97,9 @@ Ngnixs()
 			echo "Install unsuccessfully"
 		fi
 		sleep 2
-		echo "Would you like to add a rule for your firewall?"
-		select fire in "Yes" "No"
+	echo "Would you like to add a rule for your firewall?"
+	select fire in "Yes" "No"
+		do
 			case $fire in
 				Yes)
 			firewall-cmd --add-service=http --permanent
@@ -106,6 +110,8 @@ Ngnixs()
 				;;
 				*)
 				 echo "Please enter a Valid Selection"}
+			 esac
+		 done
 }
 #Menu of the installation of Webservers
 Webmenudeb()
