@@ -106,9 +106,11 @@ Ngnixs()
 				Yes)
 			firewall-cmd --add-service=http --permanent
 			firewall-cmd --reload
+			sequellmenudeb
 				;;
 				No)
 			echo "You can always put the rule , Keep on going ... "
+			sequellmenudeb
 				;;
 				*)
 				 echo "Please enter a Valid Selection"}
@@ -184,7 +186,8 @@ Mariadbs()
 	 do
 	  case $inst in
 			"Yes")
-	     apt-get install mariadb-client
+	     apt-get install -y mariadb-client
+			 PhpPerlred
 	    ;;
 	    "No")
 	     echo "No worries you can always download it"
@@ -209,6 +212,7 @@ Postgresqls()
 		echo "Install unseccessfully"
 	fi
 	sleep 1
+	PhpPearldeb
 }
 PhpPearldeb()
 {
