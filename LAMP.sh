@@ -181,7 +181,7 @@ Mariadbs()
 	echo "Would you like to install MariaDB client aswell? Yes/No "
 	select inst in "Yes" "No" "Quit"
 	 do
-	  case $inst
+	  case $inst in
 			"Yes")
 	     apt-get install mariadb-client
 	    ;;
