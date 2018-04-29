@@ -349,7 +349,7 @@ yum --enablerepo=epel -y install ngnix
 Sequellmenured()
 {
 echo "Welcome to the SQL Menu for Centos"
-select $sqlred in "MariaDB" "PostgresSQL" "Quit"
+select sqlred in "MariaDB" "PostgresSQL" "Quit"
 	do
 	case $sqlred in
 		MariaDB)
@@ -399,7 +399,7 @@ yum --enablerepo=centos-sclo-rh -y install rh-postgresql96-postgresql-server
 PhpPerlred()
 {
 echo "Welcome to the Installation of Perl/Php for Centos"
-	select $menup in "Perl" "Php" "Quit"
+	select menup in "Perl" "Php" "Quit"
 	do
 		case $menup in
 			Perl)
