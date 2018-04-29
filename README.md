@@ -1,8 +1,12 @@
 ## Welcome to DorShamay's LAMP Server Repository .
 
+### LAMP Server :
+Linux Apache MySQL Php server , this script will install them for you .
 ### You can always git remote it to your computer :
-git remote https://www.github.com/dorshamay/automation
-
+#### git remote
+```
+https://www.github.com/dorshamay/automation
+```
 The script is under LAMP.sh, you just need to give it permissions to run and Enjoy!
 
 The script has been tested on Debian Stretch(9.0) and on CentOS7.
