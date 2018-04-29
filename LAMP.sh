@@ -1,11 +1,11 @@
 #!/bin/bash
 #Creator : DorShamay
 #Porpuse : Installing LAMP server
-#Version : 1.3.4
+#Version : 1.3.5
 
 
 # Check if user is root
-checkroot()
+Checkroot()
 {
 if [ $(id -u) != "0" ]; then
 		echo "You are not root , Exiting"
@@ -14,7 +14,7 @@ if [ $(id -u) != "0" ]; then
 }
 
 
-mainmenu()
+Mainmenu()
 {
 
 echo "Which distro you running?"
@@ -431,5 +431,5 @@ yum --enablerepo=remi-safe -y install php70 php70-php-pear php70-php-mbstring
 	php70 -v
 }
 
-checkroot()
-mainmenu()
+Checkroot
+Mainmenu
