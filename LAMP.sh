@@ -1,7 +1,7 @@
 #!/bin/bash
 #Creator : DorShamay
 #Porpuse : Installing LAMP server
-#Version : 1.3.9
+#Version : 1.4.0
 
 
 # Check if user is root
