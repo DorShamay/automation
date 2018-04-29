@@ -1,7 +1,7 @@
 #!/bin/bash
 #Creator : DorShamay
 #Porpuse : Installing LAMP server
-#Version : 1.3.7
+#Version : 1.3.9
 
 
 # Check if user is root
@@ -306,9 +306,11 @@ Apahchered()
 			Yes)
 		firewall-cmd --add-service=http --permanent
 		firewall-cmd --reload
+		Sequellmenured
 			;;
 			No)
 		echo "You can always put the rule , Keep on going ... "
+		Sequellmenured
 			;;
 			*)
 			 echo "Please enter a Valid Selection"
@@ -332,9 +334,11 @@ yum --enablerepo=epel -y install ngnix
  		Yes)
  	firewall-cmd --add-service=http --permanent
  	firewall-cmd --reload
+	Sequellmenured
  		;;
  		No)
  	echo "You can always put the rule , Keep on going ... "
+	Sequellmenured
  		;;
  		*)
  		 echo "Please enter a Valid Selection"
@@ -374,6 +378,7 @@ yum --enablerepo=centos-sclo-rh -y install rh-mariadb102-mariadb-Server
 	fi
  echo "Your MariaDB Version is .. "
  mysql -V
+ PhpPerlred
 }
 
 Postgressqlred()
@@ -388,6 +393,7 @@ yum --enablerepo=centos-sclo-rh -y install rh-postgresql96-postgresql-server
 
  echo "Your PostgreSQL Version is ... "
  mysql -V
+ PhpPerlred
 }
 
 PhpPerlred()
@@ -421,6 +427,7 @@ Perlred()
 	 echo "Installation unsuccessfully"
  fi
  sleep 1
+	exit 0
 }
 
 Phpred()
@@ -435,6 +442,7 @@ yum --enablerepo=remi-safe -y install php70 php70-php-pear php70-php-mbstring
 	sleep 1
 	echo "Your PHP version is ... "
 	php70 -v
+	exit 0
 }
 
 Checkroot
