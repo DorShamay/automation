@@ -1,7 +1,7 @@
 #!/bin/bash
 #Creator : DorShamay
 #Porpuse : Installing LAMP server
-#Version : 1.3.5
+#Version : 1.3.6
 
 
 # Check if user is root
@@ -139,12 +139,11 @@ select Webserv in  "Apache2" "Ngnix" "Quit"
 		esac
 	done
 
-{
+}
 
 #SQL Server
 Sequellmenudeb()
 {
-
 echo "Which SQL Server would you like to install?"
 	select Sql in "MariaDB" "PostgreSQL" "Quit"
 		do
@@ -262,6 +261,7 @@ echo "------------------------------------------"
 echo "Welcome to Centos LAMP Server Installation"
 echo "------------------------------------------"
 }
+
 Webmenured()
 {
  echo "Welcome to WebServer Installation for Centos"
