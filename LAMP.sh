@@ -349,9 +349,9 @@ yum --enablerepo=epel -y install ngnix
 Sequellmenured()
 {
 echo "Welcome to the SQL Menu for Centos"
-select $sqlr in "MariaDB" "PostgresSQL" "Quit"
+select $sqlred in "MariaDB" "PostgresSQL" "Quit"
 	do
-	case $sqlr in
+	case $sqlred in
 		MariaDB)
 		Mariadbred
 		;;
