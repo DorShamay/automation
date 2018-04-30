@@ -24,14 +24,10 @@ select func in "Centos-RedHat" "Debian/Ubuntu" "ArchLinux" "Quit"
 			"Centos-RedHat")
 		Welcomered
 		Webmenured
-		Sequellmenured
-		PhpPerlred
 			;;
 			"Debian/Ubuntu")
 		Welcomedeb
 		Webmenudeb
-		Sequellmenudeb
-		PhpPearldeb
 			;;
 			"ArchLinux")
 		archlinux
